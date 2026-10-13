@@ -1,8 +1,8 @@
 # Auto Hide Minimap — Development handover
 
-**Development track:** `feature/persistent-auto-hide-toggle` (v1.3.0, unmerged/unreleased)
+**Development track:** `feature/persistent-auto-hide-toggle` (v1.3.0); owner approved progressing to merge and public release on 13 October 2026. See PR #1 for merge state; release publication is manual.
 
-**Current `main` baseline:** v1.2.0 — unconditional 8-second login hide plus `/ahm` manual toggle.
+**Prior `main` baseline:** v1.2.0 — unconditional 8-second login hide plus `/ahm` manual toggle. v1.3.0 adds the saved opt-out and manual options UI.
 
 ## Scope and behavior
 
@@ -32,8 +32,8 @@ The owner requested a choice whether to **automatically hide at login**, while *
 
 ## Remaining acceptance
 
-- [ ] Automated Lua 5.1 suite and review ZIP both pass on **current branch HEAD**.
-- [ ] Owner installs review ZIP on a backed-up WoW 3.3.5a client and checks `/ahm`, checkbox ON/OFF, and remembered state across `/reload`.
-- [ ] Owner separately approves merging the draft PR.
-- [ ] Owner separately approves a published v1.3.0 GitHub release (if desired).
-- [ ] Keep N-Addon-Collection unchanged until the owner finishes their other addons.
+- [x] Lua 5.1 suite and validated review ZIP passed on reviewed branch, 89 assertions: https://github.com/CosmicCuddle/AutoHideMinimap/actions/runs/38457702871.
+- [x] Owner installed review ZIP in WoW and reported that the new interface works. They explicitly confirmed **OFF remains saved after `/reload` and minimap remains visible**. The owner did not separately report an ON-after-reload test; mocked Lua tests cover this behaviour.
+- [x] Owner requested moving ahead with a release after confirming saved setting; this authorises the reviewed PR #1 merge as part of the release process.
+- [x] Owner requested a v1.3.0 release; create the tag and publish through GitHub's release editor only after verifying the merged commit, final ZIP and release description. Do not claim publication before GitHub confirms it.
+- [x] Keep N-Addon-Collection unchanged until the owner finishes their other addons.
