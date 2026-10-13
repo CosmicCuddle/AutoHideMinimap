@@ -1,0 +1,31 @@
+name: Auto Hide Minimap - WoW 3.3.5a Lua 5.1
+
+on:
+  push:
+    branches:
+      - feature/persistent-auto-hide-toggle
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-lua51:
+    name: Lua 5.1 syntax and non-destructive UI regressions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+      - name: Install Lua 5.1
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.1
+      - name: Check Lua 5.1 syntax
+        run: |
+          luac5.1 -p AutoHideMinimap.lua
+          luac5.1 -p tests/test_autohide.lua
+      - name: Run mocked WoW 3.3.5a tests
+        run: lua5.1 tests/test_autohide.lua
