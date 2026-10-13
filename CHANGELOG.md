@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — 1.3.0 (proposed)
+## 1.3.0
 
 - Add a saved **Automatically hide the minimap at login** option in Interface → AddOns.
 - Preserve existing automatic hiding as the default for older installations.
