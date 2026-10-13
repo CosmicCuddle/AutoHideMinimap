@@ -2,11 +2,9 @@
 
 A lightweight World of Warcraft **3.3.5a** addon for automatically hiding the minimap after login, with full manual control.
 
-## Current development version
+## Version
 
-**1.3.0 (proposed, not yet released)**
-
-The current `main` source version is **1.2.0**. Version 1.3.0 remains a review candidate; no GitHub release has been published for this project yet.
+**1.3.0** — adds a remembered auto-hide preference without changing the original manual toggle. The [Releases page](https://github.com/CosmicCuddle/AutoHideMinimap/releases) contains published downloads; the development branch and release preparation are tracked in pull requests.
 
 ## New: Optional automatic hiding
 
@@ -59,7 +57,7 @@ Do **not** delete the SavedVariables file when upgrading, because it stores your
 - WoW **3.3.5a**, Interface `30300`, Lua **5.1**
 - No Ace libraries or other addon dependencies
 - Automated mocked WoW UI regression tests in `tests/test_autohide.lua`
-- A final in-game check is required before merging/releasing changes
+- Owner in-game testing confirms the new controls work and auto-hide OFF persists across `/reload`; CI regression tests also pass.
 
 ## Credits
 
