@@ -1,71 +1,68 @@
 # Auto Hide Minimap
 
-A lightweight World of Warcraft 3.3.5a addon that automatically hides the minimap shortly after logging in while still allowing it to be shown or hidden manually afterwards.
+A lightweight World of Warcraft **3.3.5a** addon for automatically hiding the minimap after login, with full manual control.
 
-## Current Version
+## Current development version
 
-**Version 1.2.0**
+**1.3.0 (proposed, not yet released)**
 
-Supported client:
+The latest published version remains **1.2.0** until the changes are reviewed and released.
 
-**World of Warcraft 3.3.5a**
+## New: Optional automatic hiding
 
-## Features
+Go to **Esc → Interface → AddOns → Auto Hide Minimap** and choose:
 
-- Automatically hides the minimap after logging in.
-- Continues checking for a short period after login in case the game or another addon shows the minimap again.
-- Stops interfering after the startup period so the minimap can still be controlled manually.
-- Includes a simple slash command for showing or hiding the minimap at any time.
-- Does not require any saved settings or configuration.
+- **Automatically hide the minimap at login** — enabled by default, matching v1.2.0.
+- **Disabled** — leave the minimap alone when you log in.
+- **Show / Hide Minimap Now** — a manual toggle button that works regardless of the auto-hide setting.
 
-## How It Works
+The checkbox is saved per WoW account in `WTF/Account/<account>/SavedVariables/AutoHideMinimap.lua` (the variable is `AutoHideMinimapDB`). Your preference persists through logout, login and `/reload`.
 
-For the first few seconds after logging in, the addon checks whether the minimap is visible and hides it when necessary.
+When enabled, automatic hiding runs for the first **8 seconds** after login or `/reload`, checking every **0.25 seconds** in case other addons restore the minimap. After those 8 seconds, Auto Hide Minimap stops interfering.
 
-After this short startup period finishes, the addon stops automatically changing the minimap. This means you can show or hide it normally without the addon immediately hiding it again.
+Turning automatic hiding **OFF** immediately stops the startup checks. Turning it **ON** begins its hiding window on the **next login or `/reload`**, not immediately; this avoids undoing a manual choice. Using `/ahm` manually also stops the remaining startup checks.
 
-Using the manual toggle command during the startup period also stops the automatic hiding immediately.
+## Slash commands
 
-## Command
+| Command | Action |
+| --- | --- |
+| `/ahm` | Show or hide the minimap **now** (unchanged from 1.2.0) |
+| `/ahm auto` | Toggle automatic hiding ON/OFF |
+| `/ahm auto on` | Save automatic hiding as ON |
+| `/ahm auto off` | Save automatic hiding as OFF |
+| `/ahm status` | Display current minimap visibility and auto-hide setting |
+| `/ahm options` | Open the Interface AddOns settings page |
 
-Use:
+No slash command automatically switches your persisted option unless it explicitly mentions `auto`.
 
-`/ahm`
+## Installation / safe updating
 
-This toggles the minimap between shown and hidden.
+1. Fully close World of Warcraft.
+2. **Back up** `Interface/AddOns/AutoHideMinimap` and, if it exists, `WTF/Account/<account>/SavedVariables/AutoHideMinimap.lua`.
+3. Replace only the addon folder with the reviewed build.
+4. Start WoW and choose your preferred auto-hide setting in Interface → AddOns or use `/ahm auto off`.
 
-When used, the addon will display a short chat message confirming whether the minimap was shown or hidden.
-
-## Installation
-
-1. Download the latest release.
-2. Extract the archive.
-3. Copy the `AutoHideMinimap` folder into:
-
-   `World of Warcraft/Interface/AddOns/`
-
-4. Restart World of Warcraft or use `/reload`.
-5. The minimap will automatically be hidden shortly after logging in.
-
-The installed folder should look like:
+The folder should contain:
 
 ```text
-World of Warcraft
-└── Interface
-    └── AddOns
-        └── AutoHideMinimap
-            ├── AutoHideMinimap.toc
-            └── AutoHideMinimap.lua
+Interface/
+└── AddOns/
+    └── AutoHideMinimap/
+        ├── AutoHideMinimap.toc
+        └── AutoHideMinimap.lua
 ```
 
-## Updating
+Do **not** delete the SavedVariables file when upgrading, because it stores your chosen setting.
 
-When updating to a newer version, replace the existing `AutoHideMinimap` folder with the new one.
+## Compatibility and testing
+
+- WoW **3.3.5a**, Interface `30300`, Lua **5.1**
+- No Ace libraries or other addon dependencies
+- Automated mocked WoW UI regression tests in `tests/test_autohide.lua`
+- A final in-game check is required before merging/releasing changes
 
 ## Credits
 
 Created by **CosmicCuddle** for World of Warcraft 3.3.5a.
 
-World of Warcraft and related names, artwork and assets are trademarks or copyrights of Blizzard Entertainment.
-
-This project is not affiliated with or endorsed by Blizzard Entertainment.
+World of Warcraft and related names, artwork and assets are trademarks or copyrights of Blizzard Entertainment. This project is not affiliated with or endorsed by Blizzard Entertainment.
