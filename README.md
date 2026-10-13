@@ -6,7 +6,7 @@ A lightweight World of Warcraft **3.3.5a** addon for automatically hiding the mi
 
 **1.3.0 (proposed, not yet released)**
 
-The latest published version remains **1.2.0** until the changes are reviewed and released.
+The current `main` source version is **1.2.0**. Version 1.3.0 remains a review candidate; no GitHub release has been published for this project yet.
 
 ## New: Optional automatic hiding
 
