@@ -1,7 +1,8 @@
 ## Interface: 30300
 ## Title: Auto Hide Minimap
-## Notes: Automatically hides the minimap after logging in while allowing manual minimap control afterwards.
+## Notes: Optional auto-hide at login; manual minimap toggle and saved settings.
 ## Author: CosmicCuddle
-## Version: 1.2.0
+## Version: 1.3.0
+## SavedVariables: AutoHideMinimapDB
 
 AutoHideMinimap.lua
